@@ -72,6 +72,8 @@ function buildCharts(sample) {
     console.log(metadata);
     var targetMeta = metadata.filter(sampleObj => sampleObj.id == sample);
     console.log(targetMeta);
+    var targetMSample = targetMeta[0];
+    console.log(targetMSample);
 
     //  5. Create a variable that holds the first sample in the array.
     var targetSample = targetArray[0];
@@ -82,8 +84,9 @@ function buildCharts(sample) {
     var targetValues  = targetSample.sample_values;
 
     // 3. Create a variable that holds the washing frequency.
-    var targetWfreq = parseFloat(targetMeta.wfreq);
+    var targetWfreq = parseFloat(targetMSample.wfreq);
     console.log(typeof targetWfreq);
+    console.log(targetMeta.wfreq);
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -149,7 +152,7 @@ function buildCharts(sample) {
      mode: 'gauge+number',
      title: {text:"<b>Bellybutton Washing Frequency</b><br>Scrubs per Week"},
      gauge: {
-       axis: { range: [null, 10]},
+       axis: { range: [0, 10]},
        bar: {color: 'black'},
        bordercolor: "black",
        steps: [
